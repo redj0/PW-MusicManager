@@ -67,6 +67,9 @@ namespace PW_MusicManager
             
 
             InstallFolder = GetInstallFolder();
+            this.WindowState = FormWindowState.Minimized;
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
 
             PopulateInGameSongs();
             IngameSongsList.Sort((s1, s2) => s1.Name.CompareTo(s2.Name));
@@ -100,16 +103,25 @@ namespace PW_MusicManager
                     return NormalInstallFolder;
                 }
             } else {
-                FolderBrowserDialog OpenFolderDialogInstallFolder = new FolderBrowserDialog
+                while (true)
                 {
-                    Description = "Pistol Whip Install Folder"
-                };
-                // return selected folder if we can find \Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Global.txt
-                if(OpenFolderDialogInstallFolder.ShowDialog() == DialogResult.OK)
-                {
-                    if(File.Exists(OpenFolderDialogInstallFolder.SelectedPath + GlobalTxtFile))
+                    // Set up message box
+                    string message = @"Cannot find Pistol Whip installation. Press OK to browse and select installation folder.";
+                    string caption = "Pistol Whip Installation not found";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, caption, buttons);
+
+                    FolderBrowserDialog OpenFolderDialogInstallFolder = new FolderBrowserDialog
                     {
-                        return OpenFolderDialogInstallFolder.SelectedPath;
+                        Description = "Pistol Whip Install Folder"
+                    };
+                    // return selected folder if we can find \Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Global.txt
+                    if (OpenFolderDialogInstallFolder.ShowDialog() == DialogResult.OK)
+                    {
+                        if (File.Exists(OpenFolderDialogInstallFolder.SelectedPath + GlobalTxtFile))
+                        {
+                            return OpenFolderDialogInstallFolder.SelectedPath;
+                        }
                     }
                 }
             }
