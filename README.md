@@ -4,6 +4,8 @@ PW-MusicManager allows you to import wem audio files and replace the music withi
 
 It can be used whilst Pistol Whip is running
 
+![PW-MusicManager](https://github.com/redj0/PW-MusicManager/blob/master/img/program_start.png "PW-MusicManager")
+
 Features:
 * Import premade Wem files
 * Replace Music within game
