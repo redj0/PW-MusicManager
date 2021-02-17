@@ -213,7 +213,7 @@ namespace PW_MusicManager
                         SongsPaths.Add(file);
                         // Copy to Foler
                         string fName = Path.GetFileName(file);
-                        System.Diagnostics.Debug.WriteLine(Base_Path + fName);
+                        System.Diagnostics.Debug.WriteLine(Base_Path + @"Imported\" + fName);
                         File.Copy(file, Base_Path + fName, true);
                         // Add new ones to ComboBoxItems + Combobox
                         ComboBoxItems.Add(fName);
