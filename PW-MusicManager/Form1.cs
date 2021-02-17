@@ -91,8 +91,7 @@ namespace PW_MusicManager
 
         private string GetInstallFolder()
         {
-            //string NormalInstallFolder = @"C:\Program Files (x86)\Steam\steamapps\common\Pistol Whip";
-            string NormalInstallFolder = @"D:\Steam\steamapps\common\Pistol Whip";
+            string NormalInstallFolder = @"C:\Program Files (x86)\Steam\steamapps\common\Pistol Whip";
             
             if (Directory.Exists(NormalInstallFolder))
             {
